@@ -32,7 +32,7 @@ export class DataService {
     this.patientsData = patientsData as { [key: string]: Object }[];
     this.doctorsData = doctorsData as { [key: string]: Object }[];
     this.calendarSettings = {
-      bookingColor: 'Doctors',
+      bookingColor: 'Vets',
       calendar: {
         start: '08:00',
         end: '21:00'

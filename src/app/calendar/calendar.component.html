@@ -1,6 +1,6 @@
 <div class="planner-calendar">
     <div class="doctor-container" style="display:none">
-        <div class="app-doctors"></div>
+        <div class="app-vets"></div>
         <div class="app-doctor-icon"></div>
     </div>
     <div class="drag-sample-wrapper droppable">
@@ -16,7 +16,7 @@
                     <e-resource field='DepartmentId' title='Department' name='Departments' query='resourceQuery'
                         [dataSource]='specialistCategory' textField='Text' idField='DepartmentId' colorField='Color'>
                     </e-resource>
-                    <e-resource field='DoctorId' title='Consultation' name='Doctors' [dataSource]='resourceDataSource'
+                    <e-resource field='DoctorId' title='Consultation' name='Vets' [dataSource]='resourceDataSource'
                         textField='Name' idField='Id' groupIDField='DepartmentId' colorField='Color'
                         workDaysField='AvailableDays' startHour='StartHour' endHour='EndHour' query='resourceQuery'>
                     </e-resource>
@@ -69,7 +69,7 @@
                                 <div><span>{{getPatientName(data)}}</span></div>
                             </div>
                             <div class="doctor-name-wrap">
-                                <label>Doctor Name</label>:
+                                <label>Vet Name</label>:
                                 <div><span>Dr.{{getDoctorName(data)}}</span></div>
                             </div>
                             <div class="notes-wrap">
@@ -83,7 +83,7 @@
         </div>
         <div class="treeview-container">
             <div class="choose-Specialist-container">
-                <ejs-dropdownlist id='specialist' cssClass="e-specialist-doctors" #dropdownObj [dataSource]='doctorsData'
+                <ejs-dropdownlist id='specialist' cssClass="e-specialist-vets" #dropdownObj [dataSource]='doctorsData'
                     [fields]='fields' placeholder='Choose Specialist' popupHeight='auto' popupWidth='221px'
                     showClearButton='true' (change)='onDoctorSelect($event)' (open)='onMultiSelectOpen($event)'
                     [itemTemplate]='itemTemplate' [footerTemplate]='footerTemplate'></ejs-dropdownlist>
@@ -148,7 +148,7 @@
         <ng-template #footerTemplate>
             <div class="add-doctor" (click)="onAddClick($event)">
                 <div class="e-icon-add e-icons"></div>
-                <div class="add-doctor-text">Add New Doctor</div>
+                <div class="add-doctor-text">Add New Vet</div>
             </div>
         </ng-template>
     </ejs-dialog>
@@ -194,5 +194,5 @@
         </ng-template>
     </ejs-dialog>
 </div>
-<app-add-edit-doctor #addEditDoctorObj></app-add-edit-doctor>
+<app-add-edit-vet #addEditDoctorObj></app-add-edit-vet>
 <app-add-edit-patient #addEditPatientObj></app-add-edit-patient>

@@ -14,11 +14,11 @@ import {
   ToolbarActionArgs, ScheduleComponent, CellClickEventArgs, TimeScaleModel, GroupModel,
   PopupOpenEventArgs, EJ2Instance, getWeekFirstDate, addDays, NavigatingEventArgs, WorkHoursModel
 } from '@syncfusion/ej2-angular-schedule';
-import { QuickPopups } from '@syncfusion/ej2-schedule/src/schedule/popups/quick-popups';
+import { QuickPopups } from '@syncfusion/ej2-schedule/src/schedule/popups/quick-popups';   
 import { FieldValidator } from '@syncfusion/ej2-schedule/src/schedule/popups/form-validator';
 import { DropDownList, ComboBox } from '@syncfusion/ej2-angular-dropdowns';
 import { AddEditPatientComponent } from '../add-edit-patient/add-edit-patient.component';
-import { AddEditDoctorComponent } from '../add-edit-doctor/add-edit-doctor.component';
+import { AddEditDoctorComponent } from '../add-edit-vet/add-edit-vet.component';
 import { CalendarSettings } from '../calendar-settings';
 import { DataService } from '../data.service';
 
@@ -63,7 +63,7 @@ export class CalendarComponent implements OnInit {
   public isTreeItemDropped = false;
   public draggedItemId = '';
   public patientValue: number;
-  public group: GroupModel = { enableCompactView: false, resources: ['Departments', 'Doctors'] };
+  public group: GroupModel = { enableCompactView: false, resources: ['Departments', 'Vets'] };
   public field: Object = { dataSource: [], id: 'Id', text: 'Name' };
   public dropFields: Object = { text: 'Name', value: 'Id' };
   public allowDragAndDrop = true;
@@ -97,7 +97,7 @@ export class CalendarComponent implements OnInit {
   public itemTemplate: string = '<div class="specialist-item"><img class="value" src="./assets/images/${Text}.png" alt="doctor"/>' +
     '<div class="doctor-details"><div class="name">Dr.${Name}</div><div class="designation">${Designation}</div></div></div>';
   public footerTemplate = `<div class="add-doctor"><div class="e-icon-add e-icons"></div>
-    <div class="add-doctor-text">Add New Doctor</div></div>`;
+    <div class="add-doctor-text">Add New Vet</div></div>`;
 
   public minValidation: (args: { [key: string]: string }) => boolean = (args: { [key: string]: string; }) => {
     return args['value'].length >= 5;
@@ -224,7 +224,7 @@ export class CalendarComponent implements OnInit {
         args.items.push(waitingListItem);
         args.items.splice(5, 1);
       } else {
-        const specialistItem: ItemModel = { align: 'Center', cssClass: 'app-doctors' };
+        const specialistItem: ItemModel = { align: 'Center', cssClass: 'app-vets' };
         args.items.unshift(specialistItem);
         args.items.splice(4, 2);
       }
@@ -236,7 +236,7 @@ export class CalendarComponent implements OnInit {
       if (Browser.isDevice) {
         const doctorIconContainer: HTMLElement = <HTMLElement>(this.scheduleObj.element.querySelector('.app-doctor-icon'));
         const doctorIcon: HTMLElement = doctorIconContainer.querySelector('.doctor-icon');
-        const doctorImage: HTMLElement = createElement('img', { className: 'active-doctor', attrs: { src: './assets/Icons/Doctors.svg' } });
+        const doctorImage: HTMLElement = createElement('img', { className: 'active-doctor', attrs: { src: './assets/Icons/Vets.svg' } });
         doctorIcon.appendChild(doctorImage);
         doctorIconContainer.style.display = 'block';
         doctorIconContainer.onclick = () => this.specialistObj.show();
@@ -493,7 +493,7 @@ export class CalendarComponent implements OnInit {
   }
 
   getDoctorImage(data: any) {
-    return isNullOrUndefined(data.Text) ? './assets/Icons/Doctors.svg' : `./assets/images/${data.Text}.png`;
+    return isNullOrUndefined(data.Text) ? './assets/Icons/Vets.svg' : `./assets/images/${data.Text}.png`;
   }
 
   onSpecialistSelect(args: any) {
@@ -588,7 +588,7 @@ export class CalendarComponent implements OnInit {
 
   getBackGroundColor(data: { [key: string]: Object }) {
     let color: string;
-    if (this.eventSettings.resourceColorField === 'Doctors') {
+    if (this.eventSettings.resourceColorField === 'Vets') {
       color = this.doctorsData.filter((item: { [key: string]: Object }) => item.Id === data.DoctorId)[0]['Color'] as string;
     } else {
       color = this.specialistCategory.filter((item: { [key: string]: Object }) =>
@@ -719,7 +719,7 @@ export class CalendarComponent implements OnInit {
   clearSelection() {
     this.setDefaultData();
     const doctorImage: HTMLElement = this.scheduleObj.element.querySelector('.doctor-icon .active-doctor');
-    doctorImage.setAttribute('src', './assets/Icons/Doctors.svg');
+    doctorImage.setAttribute('src', './assets/Icons/Vets.svg');
     this.specialistObj.hide();
   }
 

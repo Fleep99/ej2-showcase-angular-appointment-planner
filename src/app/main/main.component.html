@@ -13,13 +13,17 @@
         <span class="dashboard-image"><span class="icon-dashboard item-image"></span></span>
         <span class="text" title="dashboard">Dashboard</span>
       </div>
+      <div class="sidebar-item invoice" routerLink="/invoices" (click)="onItemClick($event)">
+        <span class="scheduler-image"><span class="icon-schedule item-image"></span></span>
+        <span class="text" title="invoice">Invoices</span>
+      </div>
       <div class="sidebar-item calendar" routerLink="/calendar" (click)="onItemClick($event)">
         <span class="scheduler-image"><span class="icon-schedule item-image"></span></span>
         <span class="text" title="calendar">Schedule</span>
       </div>
-      <div class="sidebar-item doctors" routerLink="/doctors" (click)="onItemClick($event)">
-        <span class="doctors-image"><span class="icon-doctors item-image"></span></span>
-        <span class="text" title="doctors">Doctors</span>
+      <div class="sidebar-item vets" routerLink="/vets" (click)="onItemClick($event)">
+        <span class="vets-image"><span class="icon-vets item-image"></span></span>
+        <span class="text" title="vets">Staff</span>
       </div>
       <div class="sidebar-item patients" routerLink="/patients" (click)="onItemClick($event)">
         <span class="patients-image"><span class="icon-patients item-image"></span></span>

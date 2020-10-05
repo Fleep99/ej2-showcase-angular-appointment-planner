@@ -1194,7 +1194,7 @@ export let dutyTimingsData: Object[] = [
 
 export let activityData: Object[] = [
     {
-        Name: 'Added New Doctor',
+        Name: 'Added New Vet',
         Message: 'Dr.Johnson James, Cardiologist',
         Time: '5 mins ago',
         Type: 'doctor',
@@ -1258,7 +1258,7 @@ export let views: Object[] = [
 
 export let colorCategory: Object[] = [
     { Value: 'Departments', Text: 'Department Colors' },
-    { Value: 'Doctors', Text: 'Doctors Colors' }
+    { Value: 'Vets', Text: 'Vets Colors' }
 ];
 
 export let bloodGroupData: Object[] = [

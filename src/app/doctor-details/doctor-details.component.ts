@@ -4,7 +4,7 @@ import { Internationalization } from '@syncfusion/ej2-base';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { TimePicker } from '@syncfusion/ej2-angular-calendars';
 import { EJ2Instance } from '@syncfusion/ej2-angular-schedule';
-import { AddEditDoctorComponent } from '../add-edit-doctor/add-edit-doctor.component';
+import { AddEditDoctorComponent } from '../add-edit-vet/add-edit-vet.component';
 import { DataService } from '../data.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.updateActiveItem('doctors');
+    this.dataService.updateActiveItem('vets');
     this.route.params.subscribe((params: any) => this.doctorId = parseInt(params.id, 10));
     this.doctorData = this.dataService.getDoctorsData();
     this.activeData = this.doctorData.filter(item => item.Id === this.doctorId)[0];
@@ -46,7 +46,7 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   onBackIconClick() {
-    this.router.navigateByUrl('/doctors');
+    this.router.navigateByUrl('/vets');
   }
 
   onDoctorDelete() {
